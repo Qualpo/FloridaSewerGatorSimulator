@@ -1,0 +1,699 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://scene/pipe1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/Objects/Water.tres" type="Material" id=3]
+[ext_resource path="res://scene/Pipe2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/pipe3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=6]
+[ext_resource path="res://audio/music/DoomTheme.wav" type="AudioStream" id=7]
+[ext_resource path="res://scene/Pipe4.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scene/Pipe5.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scene/Pipe6.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scene/Pipe7.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scene/Pipe9.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scene/Pipe8.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scene/Enemy.tscn" type="PackedScene" id=14]
+[ext_resource path="res://textures/UI/Cursor.png" type="Texture" id=15]
+[ext_resource path="res://textures/UI/HPbarTop.png" type="Texture" id=16]
+[ext_resource path="res://textures/UI/HPbarMid.png" type="Texture" id=17]
+[ext_resource path="res://textures/UI/HPbarBase.png" type="Texture" id=18]
+[ext_resource path="res://scene/Toilet.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scene/Ladder.tscn" type="PackedScene" id=20]
+
+[sub_resource type="NavigationMesh" id=5]
+vertices = PoolVector3Array( 38.5, 0.5, -36, 41, 0.5, -36, 41, 0.5, -38, 7, 0.5, -38, 7, 0.5, -36, 9.5, 0.5, -36, 38.5, 0.5, -36, 41, 0.5, -38, 32.5, 0.5, -38, 31.25, 0.5, -36, 24, 0.5, -38, 15.5, 0.5, -38, 16.75, 0.5, -36, 24, 0.5, -36, 15.5, 0.5, -38, 7, 0.5, -38, 9.5, 0.5, -36, 16.75, 0.5, -36, 31.25, 0.5, -36, 32.5, 0.5, -38, 24, 0.5, -38, 24, 0.5, -36, 9, 0.5, -35.5, 9.5, 0.5, -36, 7, 0.5, -36, 28.5, 0.5, -2, 31, 0.5, -2, 31, 0.5, -4, -1, 0.5, -4, -1, 0.5, -2, 1.5, 0.5, -2, 28.5, 0.5, -2, 31, 0.5, -4, 21.5, 0.5, -4, 21.5, 0.5, -2, 9.5, 0.5, -26, 7, 0.5, -24, 18.5, 0.5, -24, 21, 0.5, -26, 18.5, 0.5, -2, 21.5, 0.5, -2, 21.5, 0.5, -4, 21, 0.5, -4.5, 19, 0.5, -4.5, 18.5, 0.5, -4, 19, 0.5, -14, 19, 0.5, -4.5, 21, 0.5, -4.5, 21, 0.5, -15.25, 8.75, 0.5, -4, -1, 0.5, -4, 1.5, 0.5, -2, 10, 0.5, -2, 21, 0.5, -26, 18.5, 0.5, -24, 19, 0.5, -23.5, 18.5, 0.5, -4, 8.75, 0.5, -4, 10, 0.5, -2, 18.5, 0.5, -2, 21, 0.5, -15.25, 21, 0.5, -26, 19, 0.5, -23.5, 19, 0.5, -14, 9, 0.5, -26.5, 9, 0.5, -35.5, 7, 0.5, -36, 7, 0.5, -24, 9.5, 0.5, -26, 9, 0.5, -26.5, 7, 0.5, -24, 41, 0.5, -36, 38.5, 0.5, -36, 39, 0.5, -35.5, 39, 0.5, 17.5, 38.5, 0.5, 18, 41, 0.5, 18, 41, 0.5, -29.25, 41, 0.5, -36, 39, 0.5, -35.5, 39, 0.5, -29, 39, 0.5, 4.25, 41, 0.5, 4.5, 41, 0.5, -2.25, 39, 0.5, -2.5, 39, 0.5, 17.5, 41, 0.5, 18, 41, 0.5, 11.25, 39, 0.5, 10.75, 41, 0.5, -9, 39, 0.5, -9, 39, 0.5, -2.5, 41, 0.5, -2.25, 39, 0.5, 10.75, 41, 0.5, 11.25, 41, 0.5, 4.5, 39, 0.5, 4.25, 41, 0.5, -15.75, 41, 0.5, -22.5, 39, 0.5, -22.25, 39, 0.5, -15.75, 41, 0.5, -22.5, 41, 0.5, -29.25, 39, 0.5, -29, 39, 0.5, -22.25, 41, 0.5, -9, 41, 0.5, -15.75, 39, 0.5, -15.75, 39, 0.5, -9, -1.5, 0.5, -21.25, -2, 0.5, -21.75, -4, 0.5, -21.75, -4.5, 0.5, -21, -1.5, 0.25, -18.5, -8.5, 0.25, -18.5, -1.5, 0.25, -18.5, -4.5, 0.5, -21, -8.5, 0.5, -21, 6, 0.5, -19, 6, 0.5, -16.25, 8.5, 0.25, -16.25, 8.5, 0.5, -19, 6, 0.5, -12.25, 8, 0.5, -12.25, 8.5, 0.5, -12.75, 8.5, 0.5, -15, 6, 0.5, -15, -8, 0.5, -13.5, -8, 0.5, -12.5, -6, 0.5, -12.5, -6, 0.5, -13.5, 9.5, 0.5, -10.25, 9, 0.5, -10.75, 6.5, 0.5, -10.25, 6.75, 0.5, -7.5, 9.5, 0.5, -7.75, -8.5, 0.5, -2.75, -8, 0.5, -2.25, -5.75, 0.5, -2.5, -5.75, 0.5, -5.5, -8.25, 0.5, -5.5, -8.75, 0.5, -5, 1, 0.5, -1.5, 1.5, 0.5, -2, -1, 0.5, -2, 6.25, 0.25, 8.5, 9, 0.5, 8.5, 9, 0.5, 6, -9, 0.5, 6, -9, 0.5, 8.5, -6.25, 0.25, 8.5, 6.25, 0.25, 8.5, 9, 0.5, 6, 1.5, 0.5, 6, 0, 0.25, 8.5, 1, 0.5, -1.5, -1, 0.5, -2, -1, 0.5, 5.5, 1, 0.5, 5.5, -1.5, 0.5, 6, 0, 0.25, 8.5, 1.5, 0.5, 6, 1, 0.5, 5.5, -1, 0.5, 5.5, -1.5, 0.5, 6, -9, 0.5, 6, -6.25, 0.25, 8.5, 0, 0.25, 8.5, 31, 0.5, -2, 28.5, 0.5, -2, 29, 0.5, -1.5, 21, 0.5, -1.5, 21.5, 0.5, -2, 18.5, 0.5, -2, 19, 0.5, -1.5, 28.5, 0.5, 6, 21.5, 0.5, 6, 19, 0.5, 8, 31, 0.5, 8, 21, 0.5, 5.5, 21, 0.5, -1.5, 19, 0.5, -1.5, 19, 0.5, 8, 31, 0.5, 8, 29, 0.5, 5.5, 28.5, 0.5, 6, 21.5, 0.5, 6, 21, 0.5, 5.5, 19, 0.5, 8, 31, 0.5, -2, 29, 0.5, -1.5, 29, 0.5, 5.5, 31, 0.5, 8, 9, 0.5, 8.5, 6.25, 0.25, 8.5, 6.25, 0.25, 13.5, 9, 0.5, 16, 0, 0.5, 16, 9, 0.5, 16, 6.25, 0.25, 13.5, 0, 0.25, 13.5, -6.25, 0.25, 13.5, -6.25, 0.25, 8.5, -9, 0.5, 8.5, -9, 0.5, 16, -6.25, 0.25, 13.5, -9, 0.5, 16, 0, 0.5, 16, 0, 0.25, 13.5, 41, 0.5, 20, 41, 0.5, 18, 38.5, 0.5, 18, 30.25, 0.5, 20, 41, 0.5, 20, 38.5, 0.5, 18, 28.25, 0.5, 18, 8.75, 0.5, 20, 19.5, 0.5, 20, 18.25, 0.5, 18, 8.25, 0.5, 18, 19.5, 0.5, 20, 30.25, 0.5, 20, 28.25, 0.5, 18, 18.25, 0.5, 18, 8.25, 0.5, 18, -1.5, 0.5, 17.75, -1.5, 0.5, 20.25, 8.75, 0.5, 20 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 9, 8, 6 ), PoolIntArray( 6, 8, 7 ), PoolIntArray( 13, 12, 10 ), PoolIntArray( 10, 12, 11 ), PoolIntArray( 17, 16, 14 ), PoolIntArray( 14, 16, 15 ), PoolIntArray( 21, 20, 18 ), PoolIntArray( 18, 20, 19 ), PoolIntArray( 24, 23, 22 ), PoolIntArray( 27, 26, 25 ), PoolIntArray( 30, 29, 28 ), PoolIntArray( 34, 33, 31 ), PoolIntArray( 31, 33, 32 ), PoolIntArray( 38, 37, 35 ), PoolIntArray( 35, 37, 36 ), PoolIntArray( 44, 43, 39 ), PoolIntArray( 39, 43, 42 ), PoolIntArray( 39, 42, 41 ), PoolIntArray( 39, 41, 40 ), PoolIntArray( 46, 45, 47 ), PoolIntArray( 47, 45, 48 ), PoolIntArray( 52, 51, 49 ), PoolIntArray( 49, 51, 50 ), PoolIntArray( 53, 55, 54 ), PoolIntArray( 59, 58, 56 ), PoolIntArray( 56, 58, 57 ), PoolIntArray( 63, 62, 60 ), PoolIntArray( 60, 62, 61 ), PoolIntArray( 65, 64, 66 ), PoolIntArray( 66, 64, 67 ), PoolIntArray( 70, 69, 68 ), PoolIntArray( 73, 72, 71 ), PoolIntArray( 76, 75, 74 ), PoolIntArray( 80, 79, 77 ), PoolIntArray( 77, 79, 78 ), PoolIntArray( 84, 83, 81 ), PoolIntArray( 81, 83, 82 ), PoolIntArray( 88, 87, 85 ), PoolIntArray( 85, 87, 86 ), PoolIntArray( 90, 89, 91 ), PoolIntArray( 91, 89, 92 ), PoolIntArray( 96, 95, 93 ), PoolIntArray( 93, 95, 94 ), PoolIntArray( 100, 99, 97 ), PoolIntArray( 97, 99, 98 ), PoolIntArray( 104, 103, 101 ), PoolIntArray( 101, 103, 102 ), PoolIntArray( 108, 107, 105 ), PoolIntArray( 105, 107, 106 ), PoolIntArray( 110, 109, 111 ), PoolIntArray( 111, 109, 112 ), PoolIntArray( 112, 109, 113 ), PoolIntArray( 117, 116, 114 ), PoolIntArray( 114, 116, 115 ), PoolIntArray( 121, 120, 118 ), PoolIntArray( 118, 120, 119 ), PoolIntArray( 123, 122, 124 ), PoolIntArray( 124, 122, 125 ), PoolIntArray( 125, 122, 126 ), PoolIntArray( 130, 129, 127 ), PoolIntArray( 127, 129, 128 ), PoolIntArray( 131, 135, 132 ), PoolIntArray( 132, 135, 133 ), PoolIntArray( 133, 135, 134 ), PoolIntArray( 141, 140, 136 ), PoolIntArray( 136, 140, 137 ), PoolIntArray( 137, 140, 138 ), PoolIntArray( 138, 140, 139 ), PoolIntArray( 144, 143, 142 ), PoolIntArray( 147, 146, 145 ), PoolIntArray( 150, 149, 148 ), PoolIntArray( 154, 153, 151 ), PoolIntArray( 151, 153, 152 ), PoolIntArray( 158, 157, 155 ), PoolIntArray( 155, 157, 156 ), PoolIntArray( 163, 162, 159 ), PoolIntArray( 159, 162, 161 ), PoolIntArray( 159, 161, 160 ), PoolIntArray( 167, 166, 164 ), PoolIntArray( 164, 166, 165 ), PoolIntArray( 170, 169, 168 ), PoolIntArray( 174, 173, 171 ), PoolIntArray( 171, 173, 172 ), PoolIntArray( 175, 178, 176 ), PoolIntArray( 176, 178, 177 ), PoolIntArray( 180, 179, 181 ), PoolIntArray( 181, 179, 182 ), PoolIntArray( 183, 185, 184 ), PoolIntArray( 188, 187, 186 ), PoolIntArray( 190, 189, 191 ), PoolIntArray( 191, 189, 192 ), PoolIntArray( 194, 193, 195 ), PoolIntArray( 195, 193, 196 ), PoolIntArray( 200, 199, 197 ), PoolIntArray( 197, 199, 198 ), PoolIntArray( 202, 201, 203 ), PoolIntArray( 203, 201, 204 ), PoolIntArray( 208, 207, 205 ), PoolIntArray( 205, 207, 206 ), PoolIntArray( 211, 210, 209 ), PoolIntArray( 215, 214, 212 ), PoolIntArray( 212, 214, 213 ), PoolIntArray( 219, 218, 216 ), PoolIntArray( 216, 218, 217 ), PoolIntArray( 223, 222, 220 ), PoolIntArray( 220, 222, 221 ), PoolIntArray( 225, 224, 226 ), PoolIntArray( 226, 224, 227 ) ]
+sample_partition_type = 1
+agent_height = 0.99
+agent_max_climb = 1.5
+agent_max_slope = 85.72
+filter_low_hanging_obstacles = true
+filter_baking_aabb = AABB( -100, -1, -100, 1000, 4, 1000 )
+
+[sub_resource type="QuadMesh" id=1]
+size = Vector2( 1000, 1000 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1000, 1, 1000 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+ambient_light_color = Color( 0.960784, 0.960784, 0.960784, 1 )
+ambient_light_energy = 0.12
+fog_depth_begin = 0.0
+tonemap_mode = 2
+tonemap_exposure = 1.15
+ss_reflections_enabled = true
+
+[node name="Game" type="Spatial"]
+script = ExtResource( 6 )
+Music = ExtResource( 7 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+stretch_shrink = 2
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 512, 300 )
+handle_input_locally = false
+render_target_update_mode = 3
+audio_listener_enable_3d = true
+
+[node name="Level" type="NavigationMeshInstance" parent="ViewportContainer/Viewport"]
+navmesh = SubResource( 5 )
+
+[node name="pipe18" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -3 )
+
+[node name="pipe41" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -9 )
+
+[node name="pipe1" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="pipe2" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1, -3 )
+
+[node name="pipe5" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 1, -3 )
+
+[node name="pipe6" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 1, -3 )
+
+[node name="pipe7" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 1, -3 )
+
+[node name="pipe8" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 1, -3 )
+
+[node name="pipe9" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 1, -3 )
+
+[node name="pipe10" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 1, -3 )
+
+[node name="pipe19" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, 1, -3 )
+
+[node name="pipe20" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 1, -3 )
+
+[node name="pipe21" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 1, -3 )
+
+[node name="pipe22" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 0 )
+
+[node name="pipe31" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -6 )
+
+[node name="pipe32" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -8 )
+
+[node name="pipe33" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -10 )
+
+[node name="pipe34" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -12 )
+
+[node name="pipe35" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -14 )
+
+[node name="pipe36" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -16 )
+
+[node name="pipe37" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -18 )
+
+[node name="pipe38" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -20 )
+
+[node name="pipe39" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -22 )
+
+[node name="Pipe13" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 1, -4 )
+
+[node name="Pipe13" parent="ViewportContainer/Viewport/Level/Pipe13" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -65, 0, 7 )
+
+[node name="Pipe15" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 1, -16 )
+
+[node name="Pipe30" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 1, 11 )
+
+[node name="Pipe31" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.76837e-07, 1, 11 )
+
+[node name="Pipe32" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 1, 11 )
+
+[node name="Pipe16" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -18 )
+
+[node name="Pipe24" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 7 )
+
+[node name="Pipe25" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 1, 15 )
+
+[node name="Pipe26" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 11 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, 1, 15 )
+
+[node name="Pipe27" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 11 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8, 1, 7 )
+
+[node name="Pipe14" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 1, -20 )
+
+[node name="Pipe19" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 1, 7 )
+
+[node name="Pipe20" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -9.53674e-07, 1, 15 )
+
+[node name="Pipe21" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4, 1, 15 )
+
+[node name="Pipe22" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4, 1, 15 )
+
+[node name="Pipe28" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 8, 1, 11 )
+
+[node name="Pipe29" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( 2.83122e-07, 0, -1, 0, 1, 0, 1, 0, 2.83122e-07, -8, 1, 11 )
+
+[node name="Pipe23" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 4, 1, 7 )
+
+[node name="Pipe17" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 1, -20 )
+
+[node name="Pipe18" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 7 )
+
+[node name="pipe40" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -13 )
+
+[node name="pipe46" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -28 )
+
+[node name="pipe47" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -30 )
+
+[node name="pipe48" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -32 )
+
+[node name="pipe49" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -34 )
+
+[node name="pipe64" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -34 )
+
+[node name="pipe65" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -32 )
+
+[node name="pipe66" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -30 )
+
+[node name="pipe67" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -28 )
+
+[node name="pipe68" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -26 )
+
+[node name="pipe69" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -24 )
+
+[node name="pipe70" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -22 )
+
+[node name="pipe71" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -20 )
+
+[node name="pipe72" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -18 )
+
+[node name="pipe73" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -16 )
+
+[node name="pipe74" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -14 )
+
+[node name="pipe75" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -12 )
+
+[node name="pipe76" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -10 )
+
+[node name="pipe77" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -8 )
+
+[node name="pipe78" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -6 )
+
+[node name="pipe79" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -4 )
+
+[node name="pipe80" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -2 )
+
+[node name="pipe81" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 0 )
+
+[node name="pipe82" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 2 )
+
+[node name="pipe83" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 4 )
+
+[node name="pipe102" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 6 )
+
+[node name="pipe103" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 8 )
+
+[node name="pipe104" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 10 )
+
+[node name="pipe105" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 12 )
+
+[node name="pipe106" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 14 )
+
+[node name="pipe107" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, 16 )
+
+[node name="pipe42" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 1, -25 )
+
+[node name="pipe43" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 1, -25 )
+
+[node name="pipe44" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 1, -25 )
+
+[node name="pipe45" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 1, -25 )
+
+[node name="pipe50" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 1, -37 )
+
+[node name="pipe51" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 1, -37 )
+
+[node name="pipe52" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 1, -37 )
+
+[node name="pipe53" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 1, -37 )
+
+[node name="pipe54" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 1, -37 )
+
+[node name="pipe55" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21, 1, -37 )
+
+[node name="pipe56" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23, 1, -37 )
+
+[node name="pipe57" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 1, -37 )
+
+[node name="pipe58" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27, 1, -37 )
+
+[node name="pipe59" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 1, -37 )
+
+[node name="pipe60" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31, 1, -37 )
+
+[node name="pipe61" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33, 1, -37 )
+
+[node name="pipe62" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, 1, -37 )
+
+[node name="pipe63" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37, 1, -37 )
+
+[node name="pipe23" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 2 )
+
+[node name="pipe24" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 4 )
+
+[node name="pipe28" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, 1, 7 )
+
+[node name="pipe29" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 1, 7 )
+
+[node name="pipe84" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1, 19 )
+
+[node name="pipe85" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 1, 19 )
+
+[node name="pipe86" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 1, 19 )
+
+[node name="pipe87" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 1, 19 )
+
+[node name="pipe88" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 1, 19 )
+
+[node name="pipe89" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 1, 19 )
+
+[node name="pipe90" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 1, 19 )
+
+[node name="pipe91" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 1, 19 )
+
+[node name="pipe92" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19, 1, 19 )
+
+[node name="pipe93" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21, 1, 19 )
+
+[node name="pipe94" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23, 1, 19 )
+
+[node name="pipe95" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 1, 19 )
+
+[node name="pipe96" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 1, 19 )
+
+[node name="pipe97" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29, 1, 19 )
+
+[node name="pipe98" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31, 1, 19 )
+
+[node name="pipe99" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33, 1, 19 )
+
+[node name="pipe100" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37, 1, 19 )
+
+[node name="pipe101" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35, 1, 19 )
+
+[node name="pipe30" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27, 1, 7 )
+
+[node name="pipe25" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, 0 )
+
+[node name="pipe26" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, 2 )
+
+[node name="pipe27" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, 4 )
+
+[node name="pipe11" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 1, -3 )
+
+[node name="Pipe2" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3 )
+
+[node name="Pipe11" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 19 )
+
+[node name="Pipe6" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -14 )
+
+[node name="Pipe9" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -37 )
+
+[node name="Pipe8" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 1, -25 )
+
+[node name="Pipe7" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 1, -25 )
+
+[node name="Pipe10" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 1, -37 )
+
+[node name="Pipe3" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 30, 1, -3 )
+
+[node name="Pipe4" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 1, 7 )
+
+[node name="Pipe5" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30, 1, 7 )
+
+[node name="Pipe12" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40, 1, 19 )
+
+[node name="pipe3" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2 )
+
+[node name="pipe120" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 58 )
+
+[node name="pipe136" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33, 1, 60.9999 )
+
+[node name="pipe135" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31, 1, 60.9999 )
+
+[node name="pipe134" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29, 1, 61 )
+
+[node name="pipe133" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27, 1, 61 )
+
+[node name="pipe132" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 1, 61 )
+
+[node name="pipe131" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23, 1, 61 )
+
+[node name="pipe130" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21, 1, 61 )
+
+[node name="pipe129" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19, 1, 61 )
+
+[node name="pipe128" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 1, 61 )
+
+[node name="pipe127" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 1, 61 )
+
+[node name="pipe126" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 1, 61 )
+
+[node name="pipe125" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1, 61 )
+
+[node name="pipe124" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 1, 61 )
+
+[node name="pipe123" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1, 61 )
+
+[node name="pipe151" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31, 1, 60.9999 )
+
+[node name="pipe150" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29, 1, 60.9999 )
+
+[node name="pipe149" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27, 1, 60.9999 )
+
+[node name="pipe148" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 1, 61 )
+
+[node name="pipe147" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23, 1, 61 )
+
+[node name="pipe146" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21, 1, 61 )
+
+[node name="pipe145" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, 1, 61 )
+
+[node name="pipe144" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 1, 61 )
+
+[node name="pipe143" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 1, 61 )
+
+[node name="pipe142" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 1, 61 )
+
+[node name="pipe141" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 1, 61 )
+
+[node name="pipe140" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, 61 )
+
+[node name="pipe139" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 1, 61 )
+
+[node name="pipe138" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, 61 )
+
+[node name="pipe137" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 1, 61 )
+
+[node name="pipe122" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 1, 61 )
+
+[node name="pipe121" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 1, 61 )
+
+[node name="pipe119" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 56 )
+
+[node name="pipe118" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 54 )
+
+[node name="pipe117" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 52 )
+
+[node name="pipe116" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 50 )
+
+[node name="pipe115" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 48 )
+
+[node name="pipe114" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 46 )
+
+[node name="pipe113" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 44 )
+
+[node name="pipe112" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 42 )
+
+[node name="pipe111" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 40 )
+
+[node name="pipe110" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 38 )
+
+[node name="pipe109" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 36 )
+
+[node name="pipe108" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 34 )
+
+[node name="pipe17" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 32 )
+
+[node name="pipe16" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 30 )
+
+[node name="pipe15" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 28 )
+
+[node name="pipe14" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 26 )
+
+[node name="pipe13" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 24 )
+
+[node name="pipe12" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 22 )
+
+[node name="pipe4" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4 )
+
+[node name="Pipe33" parent="ViewportContainer/Viewport/Level" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 34, 1, 61 )
+
+[node name="Pipe33" parent="ViewportContainer/Viewport/Level/Pipe33" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 70, 0, 2.67029e-05 )
+
+[node name="Toilet" parent="ViewportContainer/Viewport" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0617903, 9.28633 )
+
+[node name="Objects" type="Spatial" parent="ViewportContainer/Viewport"]
+
+[node name="Enemy4" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( -0.999999, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -0.999999, 40.256, 0.389935, 18.6838 )
+
+[node name="Enemy3" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( 5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, 33.3571, 0.362421, 60.7449 )
+
+[node name="Enemy2" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.4458, 0.400004, 60.7808 )
+
+[node name="Enemy11" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.9478, 0.400004, 7.37334 )
+
+[node name="Player" parent="ViewportContainer/Viewport/Objects" groups=["Player"] instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288956, 0.89178, -1.10768 )
+
+[node name="Ladder" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76405, 1.02256, 10.6868 )
+
+[node name="Enemy5" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( -0.999999, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -0.999999, 39.1426, 0.389935, 18.6838 )
+
+[node name="Enemy6" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( -0.999999, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -0.999999, 19.9907, 0.389935, 3.34396 )
+
+[node name="Enemy7" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( 0.999999, 0, 2.06632e-07, 0, 1, 0, -2.06632e-07, 0, 0.999999, 19.9907, 0.389935, -24.6511 )
+
+[node name="Enemy9" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( 0.999999, 0, 2.06632e-07, 0, 1, 0, -2.06632e-07, 0, 0.999999, 19.4133, 0.389935, -25.0233 )
+
+[node name="Enemy10" parent="ViewportContainer/Viewport/Objects" instance=ExtResource( 14 )]
+transform = Transform( 0.999999, 0, 2.06632e-07, 0, 1, 0, -2.06632e-07, 0, 0.999999, 19.8491, 0.389935, -24.2246 )
+
+[node name="Water" type="Area" parent="ViewportContainer/Viewport" groups=["Water"]]
+
+[node name="MeshInstance" type="MeshInstance" parent="ViewportContainer/Viewport/Water"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0547336, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../../Level")
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ViewportContainer/Viewport/Water"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+shape = SubResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.484375
+anchor_top = 0.473333
+anchor_right = 0.515625
+anchor_bottom = 0.526667
+texture = ExtResource( 15 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HpBar" type="TextureProgress" parent="."]
+margin_left = 1.0
+margin_right = 129.0
+margin_bottom = 32.0
+rect_scale = Vector2( 2, 2 )
+value = 87.0
+texture_under = ExtResource( 18 )
+texture_over = ExtResource( 16 )
+texture_progress = ExtResource( 17 )
+stretch_margin_left = 5
+stretch_margin_top = 6
+stretch_margin_right = 7
+stretch_margin_bottom = 5

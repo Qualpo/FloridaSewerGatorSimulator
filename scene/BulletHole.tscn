@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://textures/environment/BulletHole.png" type="Texture" id=1]
+
+[node name="BulletHole" type="Sprite3D"]
+shaded = true
+alpha_cut = 1
+texture = ExtResource( 1 )

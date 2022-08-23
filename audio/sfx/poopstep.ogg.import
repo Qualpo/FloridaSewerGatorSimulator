@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/poopstep.ogg-fa4b5bf36643f7b89daa6447bea8d8d0.oggstr"
+
+[deps]
+
+source_file="res://audio/sfx/poopstep.ogg"
+dest_files=[ "res://.import/poopstep.ogg-fa4b5bf36643f7b89daa6447bea8d8d0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
